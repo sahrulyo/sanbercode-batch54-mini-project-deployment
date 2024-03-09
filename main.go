@@ -6,7 +6,10 @@ import (
 	"os"
 	"practice/practice/database"
 
+	"github.com/gin-gonic/gin"
 	_ "github.com/lib/pq"
+	"github.com/sahrulyo/sanbercode-batch54-mini-project-deployment/controllers"
+	"github.com/sahrulyo/sanbercode-batch54-mini-project-deployment/database"
 )
 
 const (

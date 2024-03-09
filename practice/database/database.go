@@ -4,6 +4,8 @@ import (
 	"database/sql"
 	"fmt"
 
+	"github.com/gobuffalo/packr/v2"
+
 	migrate "github.com/rubenv/sql-migrate"
 )
 
@@ -13,14 +15,15 @@ var (
 
 func DbMigrate(dbParam *sql.DB) {
 	migrations := &migrate.PackrMigrationSource{
-		Dir: "database/sql_migrations",
+		Box: packr.New("migrations", "./sql_migrations"),
 	}
-	n, errs := migrate.Exec(dbParam, "postgres", migrations, migrate.Up)
-	if errs != nil {
-		panic(errs)
+
+	n, err := migrate.Exec(dbParam, "postgres", migrations, migrate.Up)
+	if err != nil {
+		panic(err)
 	}
 
 	DbConnection = dbParam
 
-	fmt.Println("applied", n, "migration!")
+	fmt.Println("applied", n, " migrations!")
 }

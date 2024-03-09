@@ -1,24 +1,29 @@
 package repository
+
 import (
 	"database/sql"
-	"practice/structs"
 	"fmt"
-	
+	"practice/structs"
+
+	"github.com/sanbercode-batch54-mini-project-deployment/structs"
 )
 
-func GetAllPerson(db *sql.DB) (err error, results [](*structs.Person) {
+func GetAllPerson(db *sql.DB) (err error, results []structs.Person) {
 	sql := "SELECT * FROM person"
-	
-	rows, err := db.Query(sql)
-	if err != nil : err *
 
+	rows, err := db.Query(sql)
+	if err != nil {
+		fmt.Println("error when get all data")
+	}
 	defer rows.Close()
 
-	for rows.Next(){
+	for rows.Next() {
 		var person = structs.Person
 
 		err = rows.Scan(&person.ID, &person.FirstName, &person.LastName)
-		if err != nil : err *
+		if err != nil {
+			fmt.Println("error when get all data")
+		}
 
 		results = append(results, person)
 	}
