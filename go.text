@@ -1,0 +1,17 @@
+Practice 
+    .Idea // folder auto compile
+    config // folder
+      .env // file auto
+    controllers //folder
+      person.go //file go
+    database / folder
+       sql_migrations / folder
+          1_initiate.sql //file
+          database.go //file
+    repository //file
+         person.go //file
+    structs //file folder
+         structs.go //file
+    go.mod //initial
+    main.go //index     
+           
